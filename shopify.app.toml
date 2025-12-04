@@ -2,7 +2,7 @@
 
 client_id = "47e852032891d2751254de4e4c7fe121"
 name = "promofy"
-application_url = "https://example.com"
+application_url = "https://promofy-flame.vercel.app"
 embedded = true
 
 [build]
@@ -25,4 +25,8 @@ api_version = "2026-01"
 scopes = "write_products,write_discounts,read_discounts"
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = [
+  "https://promofy-flame.vercel.app/auth/callback",
+  "https://promofy-flame.vercel.app/auth/shopify/callback",
+  "https://promofy-flame.vercel.app/api/auth/callback"
+]

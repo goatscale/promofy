@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "511b20e21a3d7dcb6c98e1b2b6f60e4a"
-name = "promofy"
+name = "Promofy"
 application_url = "https://promofy-flame.vercel.app"
 embedded = true
 

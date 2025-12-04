@@ -116,7 +116,7 @@ export default function DiscountNew() {
     const [enableBuy8, setEnableBuy8] = useState(false);
     const [enableBuy12, setEnableBuy12] = useState(false);
 
-    const [title, setTitle] = useState("Buy 4 Pay 2");
+    const [title, setTitle] = useState("Buy 4 Pay 2 Discount - " + new Date().toLocaleTimeString());
 
     useEffect(() => {
         console.log("Action Data:", actionData);

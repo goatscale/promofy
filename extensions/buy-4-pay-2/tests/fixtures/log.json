@@ -1,0 +1,46 @@
+{
+  "payload": {
+    "export": "run",
+    "target": "purchase.product-discount.run",
+    "input": {
+      "cart": {
+        "lines": [
+          {
+            "id": "1",
+            "quantity": 1,
+            "cost": {
+              "amountPerQuantity": {
+                "amount": "10.0",
+                "currencyCode": "USD"
+              }
+            }
+          },
+          {
+            "id": "2",
+            "quantity": 1,
+            "cost": {
+              "amountPerQuantity": {
+                "amount": "10.0",
+                "currencyCode": "USD"
+              }
+            }
+          },
+          {
+            "id": "3",
+            "quantity": 1,
+            "cost": {
+              "amountPerQuantity": {
+                "amount": "10.0",
+                "currencyCode": "USD"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "output": {
+      "discountApplicationStrategy": "FIRST",
+      "discounts": []
+    }
+  }
+}

@@ -1,0 +1,19 @@
+query RunInput {
+  cart {
+    lines {
+      id
+      quantity
+      cost {
+        amountPerQuantity {
+          amount
+          currencyCode
+        }
+      }
+    }
+  }
+  discountNode {
+    metafield(namespace: "$app:buy-4-pay-2", key: "function-configuration") {
+      value
+    }
+  }
+}

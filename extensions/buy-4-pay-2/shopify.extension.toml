@@ -1,0 +1,21 @@
+api_version = "2025-01"
+
+[[extensions]]
+name = "t:name"
+handle = "buy-4-pay-2"
+type = "function"
+uid = "cd15dd32-ac21-6fce-fa28-690439019ccde73e34c8"
+description = "t:description"
+
+  [[extensions.targeting]]
+  target = "purchase.product-discount.run"
+  input_query = "src/run.graphql"
+  export = "run"
+
+  [extensions.build]
+  command = ""
+  path = "dist/function.wasm"
+
+  [extensions.ui.paths]
+  create = "/app/discount/buy-4-pay-2/create"
+  details = "/app/discount/buy-4-pay-2/details"

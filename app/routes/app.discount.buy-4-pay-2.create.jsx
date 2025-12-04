@@ -22,14 +22,39 @@ export const action = async ({ request }) => {
     const enableBuy8 = formData.get("enableBuy8") === "true";
     const enableBuy12 = formData.get("enableBuy12") === "true";
 
+    // 1. Fetch the Function ID dynamically
+    const functionsResponse = await admin.graphql(
+        `#graphql
+        query GetFunctions {
+            shopifyFunctions(first: 25) {
+                nodes {
+                    id
+                    title
+                    apiType
+                }
+            }
+        }`
+    );
+
+    const functionsJson = await functionsResponse.json();
+    const functions = functionsJson.data.shopifyFunctions.nodes;
+    console.log("Available Functions:", JSON.stringify(functions, null, 2));
+
+    // Find the function with the title "buy-4-pay-2" (or whatever your extension is named)
+    const functionNode = functions.find(f => f.title === "buy-4-pay-2");
+
+    if (!functionNode) {
+        return json({ errors: [{ message: "Function 'buy-4-pay-2' not found. Please ensure the extension is deployed." }] });
+    }
+
+    const functionId = functionNode.id;
+    console.log("Found Function ID:", functionId);
+
     const baseDiscount = {
-        functionId: "019ae66e-7144-7d10-b2b3-153cda50f3c9",
+        functionId,
         title,
         startsAt: new Date(),
     };
-
-    console.log("Using Function ID:", baseDiscount.functionId);
-    console.log("Available Env Vars:", Object.keys(process.env).filter(key => key.startsWith("SHOPIFY")));
 
     try {
         const response = await admin.graphql(
